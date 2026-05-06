@@ -21,13 +21,11 @@ import os
 def imdisp(data):
 
      plt.imshow(data,vmin=np.median(data)-np.std(data),vmax=np.median(data)+np.std(data),origin='lower')
-     #plt.imshow(data,vmin=950, vmax = 3000, origin='lower')
 
 def mkmos(infile):
 
      # filename of new image to be created
      newimage = os.path.splitext(infile)[0].split("/")[-1] + "_mos_v" + versNum + ".fits"
-     #newimage = infile[:infile.find(".fits")] + "_mos_v" + versNum + ".fits" 
 
      hdul =  fits.open(infile)
      phead = hdul[0].header
@@ -128,12 +126,16 @@ group.add_argument('--image', type=str, dest='inImage', help = 'input image')
 group.add_argument('--list', type=str, dest='inList', help = 'input list of images')
 args = parser.parse_args()
 
+versNum = '10'
+versDate = '2026-05-01'
+
 if args.inImage:
    inImage = args.inImage
    print ("input image is %s" % (inImage))
    #nstr = len(str.split(inImage,"."))
    #outFile = ".".join(str.split(inImage)[:(nstr-1)]) + "_out.txt"
    nimgs = 1
+   mkmos(inImage)
 
 if args.inList:
    inList = args.inList
@@ -142,14 +144,6 @@ if args.inList:
    #outFile = ".".join(str.split(inList)[:(nstr-1)]) + "_out.txt"
    imglist = np.genfromtxt(inList,dtype=str)
    nimgs = len(imglist)
-
-versNum = '10'
-versDate = '2026-05-01'
-
-for i in range(nimgs):
-
-   if nimgs>1:
-      inImage = imglist[i]
-
-   mkmos(inImage)
-
+   for i in range(nimgs):
+     inImage = imglist[i]
+     mkmos(inImage)
