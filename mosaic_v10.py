@@ -55,11 +55,11 @@ def mkmos(infile):
      t0q3 = np.mean(q3[ny-n:ny,:xtrim])
      b0q4 = np.mean(q4[:n,:xtrim])
      t0q4 = np.mean(q4[ny-n:ny,:xtrim])
-     print ("mean values along top %d and bottom %d rows:\n" % (n,n))
-     print ("im3 Q1 %.2f %.2f\n" % (b0q3,t0q3))
-     print ("im4 Q2 %.2f %.2f\n" % (b0q4,t0q4))
-     print ("im1 Q3 %.2f %.2f\n" % (b0q1,t0q1))
-     print ("im2 Q4 %.2f %.2f\n" % (b0q2,t0q2))
+     #print ("mean values along top %d and bottom %d rows:\n" % (n,n))
+     #print ("im3 Q1 %.2f %.2f\n" % (b0q3,t0q3))
+     #print ("im4 Q2 %.2f %.2f\n" % (b0q4,t0q4))
+     #print ("im1 Q3 %.2f %.2f\n" % (b0q1,t0q1))
+     #print ("im2 Q4 %.2f %.2f\n" % (b0q2,t0q2))
      
      # subtracting the median within the 'restricted' overscan region and trimming
      # ncovrscn of overscan
